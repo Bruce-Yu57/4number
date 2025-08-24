@@ -26,21 +26,21 @@ function updateDisplay() {
         digitElement.textContent = currentDigits[i];
         
         // 添加變化動畫
-        digitElement.classList.add(\'digit-change\');
+        digitElement.classList.add('digit-change');
         setTimeout(() => {
-            digitElement.classList.remove(\'digit-change\');
+            digitElement.classList.remove('digit-change');
         }, 500);
     }
 }
 
 // 更新當前數字顯示
 function updateCurrentNumber() {
-    const numberString = currentDigits.join(\'\');
-    document.getElementById(\'current-number\').textContent = numberString;
+    const numberString = currentDigits.join('');
+    document.getElementById('current-number').textContent = numberString;
     
     // 更新鼓勵語句
     const randomIndex = Math.floor(Math.random() * encouragements.length);
-    document.getElementById(\'encouragement\').textContent = encouragements[randomIndex];
+    document.getElementById('encouragement').textContent = encouragements[randomIndex];
 }
 
 // 改變指定位數的數字
@@ -102,7 +102,7 @@ function playClickSound() {
         oscillator.stop(audioContext.currentTime + 0.1);
     } catch (e) {
         // 如果音效播放失敗，忽略錯誤
-        console.log(\'音效播放不支援\');
+        console.log('音效播放不支援');
     }
 }
 
@@ -125,28 +125,28 @@ function playRandomSound() {
         oscillator.start(audioContext.currentTime);
         oscillator.stop(audioContext.currentTime + 0.3);
     } catch (e) {
-        console.log(\'音效播放不支援\');
+        console.log('音效播放不支援');
     }
 }
 
 // 添加隨機動畫效果
 function addRandomAnimation() {
-    const container = document.querySelector(\'\\.number-display\');
-    container.style.animation = \'none\';
+    const container = document.querySelector('.number-display');
+    container.style.animation = 'none';
     
     // 強制重新計算樣式
     container.offsetHeight;
     
     // 添加搖擺動畫
-    container.style.animation = \'shake 0.5s ease-in-out\';
+    container.style.animation = 'shake 0.5s ease-in-out';
     
     setTimeout(() => {
-        container.style.animation = \'\';
+        container.style.animation = '';
     }, 500);
 }
 
 // 添加搖擺動畫的CSS
-const style = document.createElement(\'style\');
+const style = document.createElement('style');
 style.textContent = `
     @keyframes shake {
         0%, 100% { transform: translateX(0); }
@@ -157,32 +157,32 @@ style.textContent = `
 document.head.appendChild(style);
 
 // 鍵盤支援
-document.addEventListener(\'keydown\', function(event) {
+document.addEventListener('keydown', function(event) {
     switch(event.key) {
-        case \'ArrowUp\':
+        case 'ArrowUp':
             // 如果沒有焦點在特定位數上，預設操作個位
             changeDigit(3, 1);
             event.preventDefault();
             break;
-        case \'ArrowDown\':
+        case 'ArrowDown':
             changeDigit(3, -1);
             event.preventDefault();
             break;
-        case \' \':
-        case \'Enter\':
+        case ' ':
+        case 'Enter':
             generateRandomNumber();
             event.preventDefault();
             break;
-        case \'1\':
+        case '1':
             changeDigit(0, 1);
             break;
-        case \'2\':
+        case '2':
             changeDigit(1, 1);
             break;
-        case \'3\':
+        case '3':
             changeDigit(2, 1);
             break;
-        case \'4\':
+        case '4':
             changeDigit(3, 1);
             break;
     }
@@ -191,19 +191,19 @@ document.addEventListener(\'keydown\', function(event) {
 // 觸控支援
 let touchStartY = 0;
 
-document.addEventListener(\'touchstart\', function(event) {
+document.addEventListener('touchstart', function(event) {
     touchStartY = event.touches[0].clientY;
 });
 
-document.addEventListener(\'touchend\', function(event) {
+document.addEventListener('touchend', function(event) {
     const touchEndY = event.changedTouches[0].clientY;
     const diff = touchStartY - touchEndY;
     
     // 如果滑動距離足夠大
     if (Math.abs(diff) > 50) {
-        const target = event.target.closest(\'\\.digit-container\');
+        const target = event.target.closest('.digit-container');
         if (target) {
-            const digitContainers = Array.from(document.querySelectorAll(\'\\.digit-container\'));
+            const digitContainers = Array.from(document.querySelectorAll('.digit-container'));
             const index = digitContainers.indexOf(target);
             
             if (index !== -1) {
@@ -220,4 +220,4 @@ document.addEventListener(\'touchend\', function(event) {
 });
 
 // 頁面載入完成後初始化
-document.addEventListener(\'DOMContentLoaded\', init);
+document.addEventListener('DOMContentLoaded', init);
