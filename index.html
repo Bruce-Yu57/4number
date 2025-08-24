@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>認識個十百千 - 數字學習遊戲</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="title">🎯 認識個十百千 🎯</h1>
+            <p class="subtitle">點擊箭頭來改變數字吧！</p>
+        </header>
+        
+        <main class="game-area">
+            <div class="number-display">
+                <!-- 千位 -->
+                <div class="digit-container">
+                    <button class="btn-up" onclick="changeDigit(0, 1)">
+                        <span class="arrow-up">▲</span>
+                    </button>
+                    <div class="digit" id="digit-0">1</div>
+                    <div class="position-label">千位</div>
+                    <button class="btn-down" onclick="changeDigit(0, -1)">
+                        <span class="arrow-down">▼</span>
+                    </button>
+                </div>
+                
+                <!-- 百位 -->
+                <div class="digit-container">
+                    <button class="btn-up" onclick="changeDigit(1, 1)">
+                        <span class="arrow-up">▲</span>
+                    </button>
+                    <div class="digit" id="digit-1">2</div>
+                    <div class="position-label">百位</div>
+                    <button class="btn-down" onclick="changeDigit(1, -1)">
+                        <span class="arrow-down">▼</span>
+                    </button>
+                </div>
+                
+                <!-- 十位 -->
+                <div class="digit-container">
+                    <button class="btn-up" onclick="changeDigit(2, 1)">
+                        <span class="arrow-up">▲</span>
+                    </button>
+                    <div class="digit" id="digit-2">3</div>
+                    <div class="position-label">十位</div>
+                    <button class="btn-down" onclick="changeDigit(2, -1)">
+                        <span class="arrow-down">▼</span>
+                    </button>
+                </div>
+                
+                <!-- 個位 -->
+                <div class="digit-container">
+                    <button class="btn-up" onclick="changeDigit(3, 1)">
+                        <span class="arrow-up">▲</span>
+                    </button>
+                    <div class="digit" id="digit-3">4</div>
+                    <div class="position-label">個位</div>
+                    <button class="btn-down" onclick="changeDigit(3, -1)">
+                        <span class="arrow-down">▼</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="current-number">
+                <p>目前的數字是：<span id="current-number">1234</span></p>
+            </div>
+            
+            <div class="controls">
+                <button class="btn-random" onclick="generateRandomNumber()">
+                    🎲 隨機產生數字
+                </button>
+            </div>
+        </main>
+        
+        <footer>
+            <p class="encouragement" id="encouragement">太棒了！繼續練習吧！ 🌟</p>
+        </footer>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
